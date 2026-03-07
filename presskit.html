@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Press Kit — Shanks Studio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0D0D1A; color: #C8D0E0; font-family: Georgia, serif; line-height: 1.8; padding: 2rem 1rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  header { text-align: center; padding: 2rem 0 3rem; border-bottom: 1px solid rgba(233,69,96,0.3); margin-bottom: 2.5rem; }
+  .logo { font-size: 3rem; margin-bottom: 0.5rem; }
+  h1 { font-family: Georgia, serif; font-size: 2rem; color: white; margin-bottom: 0.4rem; }
+  .subtitle { color: #E94560; font-size: 0.9rem; letter-spacing: 0.15em; }
+  h2 { font-size: 1.15rem; color: #E94560; margin: 2.5rem 0 1rem; padding-left: 0.8rem; border-left: 3px solid #E94560; }
+  p { margin-bottom: 1rem; font-size: 0.97rem; color: #A0B0C8; }
+  a { color: #16C79A; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .fact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0 2rem; }
+  .fact-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 1.2rem 1.5rem; }
+  .fact-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: #E94560; margin-bottom: 0.3rem; font-family: Arial, sans-serif; }
+  .fact-value { font-size: 1rem; color: white; }
+
+  .game-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(212,160,50,0.15); padding: 1.5rem; margin-bottom: 1.5rem; display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; align-items: start; }
+  .game-icon { font-size: 3rem; text-align: center; }
+  .game-title { font-size: 1.1rem; font-weight: bold; color: white; margin-bottom: 0.3rem; font-family: Arial, sans-serif; }
+  .game-genre { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #E94560; margin-bottom: 0.5rem; font-family: Arial, sans-serif; }
+  .game-desc { font-size: 0.92rem; color: #A0B0C8; }
+  .tag { display: inline-block; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.5rem; border: 1px solid rgba(212,160,50,0.25); color: #D4A032; margin: 0.3rem 0.2rem 0 0; font-family: Arial, sans-serif; }
+
+  .contact-box { background: rgba(22,199,154,0.05); border: 1px solid rgba(22,199,154,0.2); padding: 1.5rem; margin-top: 1rem; }
+  .download-btn { display: inline-block; background: #E94560; color: white; padding: 0.7rem 1.8rem; font-family: Arial, sans-serif; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; margin-top: 0.5rem; transition: background 0.2s; }
+  .download-btn:hover { background: #c73350; text-decoration: none; }
+  .download-btn.secondary { background: transparent; border: 1px solid rgba(212,160,50,0.4); color: #D4A032; }
+  .download-btn.secondary:hover { background: rgba(212,160,50,0.08); }
+
+  footer { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.82rem; color: #445566; }
+
+  @media(max-width:600px) { .fact-grid { grid-template-columns: 1fr; } .game-card { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo">⚔️</div>
+    <h1>Shanks Studio</h1>
+    <div class="subtitle">PRESS KIT — INDIE MOBILE GAME STUDIO</div>
+  </header>
+
+  <h2>About Shanks Studio</h2>
+  <p>Shanks Studio is an independent mobile game developer focused on creating high-quality hyper-casual games for a global audience. Inspired by the spirit of adventure — we sail without maps, build without limits, and ship games that players love.</p>
+  <p>Our mission: deliver simple, satisfying, and globally accessible mobile gaming experiences with polished design and zero compromise on fun.</p>
+
+  <div class="fact-grid">
+    <div class="fact-card">
+      <div class="fact-label">Studio Name</div>
+      <div class="fact-value">Shanks Studio</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-label">Founded</div>
+      <div class="fact-value">2025</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-label">Location</div>
+      <div class="fact-value">Turkey 🇹🇷</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-label">Platform</div>
+      <div class="fact-value">Android (Google Play)</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-label">Engine</div>
+      <div class="fact-value">Unity 2022 LTS</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-label">Website</div>
+      <div class="fact-value"><a href="https://shanksstudio.github.io">shanksstudio.github.io</a></div>
+    </div>
+  </div>
+
+  <h2>Our Games</h2>
+
+  <div class="game-card">
+    <div class="game-icon">🗼</div>
+    <div>
+      <div class="game-genre">Single Tap · Casual</div>
+      <div class="game-title">Tap Stack Tower</div>
+      <div class="game-desc">Stack blocks with perfect precision in this satisfying hyper-casual game. One tap is all it takes — but mastering the timing takes skill. Features neon visuals, combo system, and daily challenges.</div>
+      <span class="tag">Android</span>
+      <span class="tag">Free</span>
+      <span class="tag">AdSupported</span>
+      <span class="tag">Coming Soon</span>
+    </div>
+  </div>
+
+  <div class="game-card">
+    <div class="game-icon">🎨</div>
+    <div>
+      <div class="game-genre">Endless Runner · Reflex</div>
+      <div class="game-title">Color Road Runner</div>
+      <div class="game-desc">Match your color, dodge the rest. An endless runner where every millisecond matters and the speed never stops increasing.</div>
+      <span class="tag">Android</span>
+      <span class="tag">In Development</span>
+    </div>
+  </div>
+
+  <div class="game-card">
+    <div class="game-icon">👑</div>
+    <div>
+      <div class="game-genre">Idle · Clicker</div>
+      <div class="game-title">Idle Coin Empire</div>
+      <div class="game-desc">Build your medieval kingdom from nothing. Every second, your empire grows — even when you're offline.</div>
+      <span class="tag">Android</span>
+      <span class="tag">In Development</span>
+    </div>
+  </div>
+
+  <h2>Brand Assets</h2>
+  <p>Please use the following assets for press coverage. Do not alter logos or brand colors without permission.</p>
+
+  <p>
+    <strong style="color:white">Primary Color:</strong> <span style="color:#E94560">#E94560</span> (Crimson Red)<br>
+    <strong style="color:white">Secondary Color:</strong> <span style="color:#D4A032">#D4A032</span> (Gold)<br>
+    <strong style="color:white">Background:</strong> <span style="color:#aaa">#0D0D1A</span> (Deep Navy)<br>
+    <strong style="color:white">Accent:</strong> <span style="color:#16C79A">#16C79A</span> (Teal)
+  </p>
+
+  <a href="https://shanksstudio.github.io" class="download-btn secondary">🌐 Visit Website</a>
+
+  <h2>Contact</h2>
+  <div class="contact-box">
+    <p style="margin-bottom:0.5rem">For press inquiries, review copies, or collaboration:</p>
+    <p style="margin-bottom:0.3rem">📧 <a href="mailto:hello@shanksstudio.com">hello@shanksstudio.com</a></p>
+    <p style="margin-bottom:0">🌐 <a href="https://shanksstudio.github.io">shanksstudio.github.io</a></p>
+  </div>
+
+  <footer>© 2026 Shanks Studio. All rights reserved.<br>All trademarks and registered trademarks are the property of their respective owners.</footer>
+
+</div>
+</body>
+</html>
