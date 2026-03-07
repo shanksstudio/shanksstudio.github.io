@@ -5,6 +5,7 @@
 **Shanks Studio** is an independent mobile game developer focused on hyper-casual games for a global audience. Built with Unity, shipped on Google Play.
 
 ---
+<img width="1280" height="640" alt="ShanksStudio_Banner" src="https://github.com/user-attachments/assets/49424ac9-c9a8-4093-b8db-41976103ba2b" />
 
 ## 🎮 Games
 
