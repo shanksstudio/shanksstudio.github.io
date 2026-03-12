@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — Tap Stack Tower</title>
+<title>Privacy Policy — Shanks Studio</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -37,6 +37,24 @@
     font-size: 0.82rem;
     color: #8899BB;
   }
+  /* game tags in header */
+  .game-tags {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.2rem;
+  }
+  .game-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.8rem;
+    border-radius: 100px;
+    font-family: Georgia, serif;
+  }
+  .tag-stack { background: rgba(232,19,42,0.12); border: 1px solid rgba(232,19,42,0.3); color: #FF6070; }
+  .tag-runner { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.25); color: #00D4FF; }
+
   h2 {
     font-size: 1.15rem;
     color: #E94560;
@@ -44,6 +62,25 @@
     padding-left: 0.8rem;
     border-left: 3px solid #E94560;
   }
+  /* per-game subsection heading */
+  h3 {
+    font-size: 0.95rem;
+    color: #C8D0E0;
+    margin: 1.2rem 0 0.4rem;
+    font-family: Georgia, serif;
+  }
+  h3 .game-pill {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+  }
+  h3 .pill-stack  { background: rgba(232,19,42,0.15);  color: #FF6070; }
+  h3 .pill-runner { background: rgba(0,212,255,0.1);   color: #00D4FF; }
+
   p { margin-bottom: 1rem; font-size: 0.97rem; color: #A0B0C8; }
   ul { margin: 0.5rem 0 1rem 1.5rem; }
   li { margin-bottom: 0.4rem; font-size: 0.97rem; color: #A0B0C8; }
@@ -54,6 +91,12 @@
     border: 1px solid rgba(22,199,154,0.2);
     padding: 1.5rem;
     margin-top: 2rem;
+  }
+  /* divider between game sections */
+  .game-divider {
+    border: none;
+    border-top: 1px dashed rgba(255,255,255,0.06);
+    margin: 1.2rem 0;
   }
   footer {
     text-align: center;
@@ -71,17 +114,21 @@
   <header>
     <div class="logo">🎮</div>
     <h1>Privacy Policy</h1>
-    <div class="subtitle">TAP STACK TOWER — SHANKS STUDIO</div>
-    <div class="last-updated">Last updated: February 2026</div>
+    <div class="subtitle">SHANKS STUDIO</div>
+    <div class="game-tags">
+      <span class="game-tag tag-stack">🗼 Tap Stack Tower: Build Blocks</span>
+      <span class="game-tag tag-runner">🎨 Color Road Runner</span>
+    </div>
+    <div class="last-updated">Last updated: March 2026</div>
   </header>
 
-  <p>This Privacy Policy describes how Shanks Studio ("we", "us", or "our") handles information in connection with the mobile game <strong style="color:white">Tap Stack Tower</strong> ("the App"). We are committed to protecting your privacy.</p>
+  <p>This Privacy Policy describes how <strong style="color:white">Shanks Studio</strong> ("we", "us", or "our") handles information in connection with our mobile games <strong style="color:white">Tap Stack Tower: Build Blocks</strong> and <strong style="color:white">Color Road Runner</strong> (collectively referred to as "the Apps"). We are committed to protecting your privacy.</p>
 
   <h2>1. Information We Collect</h2>
-  <p>Tap Stack Tower does not directly collect any personal information from users. However, the App uses third-party services that may collect information used to identify you.</p>
+  <p>Our Apps do not directly collect any personal information from users. However, the Apps use third-party services that may collect information used to identify you. Neither App requires account registration or collects names, email addresses, or any other personally identifiable information directly.</p>
 
   <h2>2. Third-Party Services</h2>
-  <p>The App uses <strong style="color:white">Google AdMob</strong> to display advertisements. AdMob may collect and use data to provide personalized or non-personalized ads. This may include:</p>
+  <p>Both Apps use <strong style="color:white">Google AdMob</strong> to display advertisements. AdMob may collect and use data to provide personalized or non-personalized ads. This may include:</p>
   <ul>
     <li>Device identifiers (Advertising ID)</li>
     <li>IP address and approximate location</li>
@@ -91,20 +138,32 @@
   <p>For more information on how Google uses data, please visit: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
   <p>You can opt out of personalized advertising by visiting: <a href="https://www.google.com/settings/ads" target="_blank">google.com/settings/ads</a></p>
 
-  <h2>3. Data Storage</h2>
-  <p>The App stores the following data locally on your device only:</p>
+  <h2>3. Data Stored Locally</h2>
+  <p>The following data is stored locally on your device only and is never transmitted to our servers:</p>
+
+  <h3><span class="game-pill pill-stack">Tap Stack Tower: Build Blocks</span></h3>
   <ul>
     <li>Your high score and best score</li>
     <li>Game settings and preferences</li>
     <li>Daily challenge progress</li>
   </ul>
-  <p>This data is stored using Unity PlayerPrefs and is never transmitted to our servers.</p>
+
+  <hr class="game-divider">
+
+  <h3><span class="game-pill pill-runner">Color Road Runner</span></h3>
+  <ul>
+    <li>Personal best distance / score</li>
+    <li>Unlocked color skins and cosmetics</li>
+    <li>Game settings and preferences</li>
+  </ul>
+
+  <p style="margin-top:0.8rem">All locally stored data is handled via Unity PlayerPrefs and remains entirely on your device.</p>
 
   <h2>4. Children's Privacy</h2>
-  <p>The App is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided personal information, please contact us and we will take steps to delete such information.</p>
+  <p>Our Apps are not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided personal information through one of our Apps, please contact us and we will take steps to delete such information promptly.</p>
 
   <h2>5. Advertising</h2>
-  <p>The App displays ads provided by Google AdMob, including banner ads, interstitial ads, and rewarded video ads. These ads may be personalized based on your interests. You may see a consent dialog when first launching the App in certain regions (e.g., EU/EEA) in compliance with GDPR.</p>
+  <p>Both Apps display ads provided by Google AdMob, including banner ads, interstitial ads, and rewarded video ads. These ads may be personalized based on your interests. Users in certain regions (e.g., EU/EEA) will see a consent dialog on first launch in compliance with GDPR and the EU User Consent Policy.</p>
 
   <h2>6. Data Security</h2>
   <p>We value your trust and strive to use commercially acceptable means of protecting any information. However, no method of electronic storage or transmission over the internet is 100% secure.</p>
@@ -131,7 +190,7 @@
 
   <footer>
     © 2026 Shanks Studio. All rights reserved.<br>
-    Tap Stack Tower — Privacy Policy
+    Tap Stack Tower: Build Blocks &amp; Color Road Runner — Privacy Policy
   </footer>
 
 </div>
