@@ -12,7 +12,7 @@
 | Game | Genre | Status |
 |------|-------|--------|
 | 🗼 Tap Stack Tower | Single Tap / Casual | 🟡 Coming Soon |
-| 🎨 Color Road Runner | Endless Runner | 🔵 In Development |
+| 🎨 Color Road Runner | Endless Runner | 🟡 Coming Soon  |
 | 👑 Idle Coin Empire | Idle / Clicker | 🔵 In Development |
 | ⚫ Helix Spiral Drop | Physics Drop | 🔵 In Development |
 | 🔢 Number Merge 2048+ | Puzzle / Merge | 🔵 In Development |
@@ -31,11 +31,10 @@
 
 ## 🛠️ Tech Stack
 
-- **Engine:** Unity 2022 LTS
+- **Engine:** Unity 2022 LTS, Unity 6.3 LTS
 - **Language:** C#
 - **Platform:** Android (Google Play)
 - **Monetization:** Google AdMob (Banner, Interstitial, Rewarded)
-- **IDE:** VS Code + Claude Code
 
 ---
 
