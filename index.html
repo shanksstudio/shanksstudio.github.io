@@ -1195,17 +1195,17 @@ footer{
       <!-- Card 4 -->
       <div class="gcard reveal rd4" data-tilt>
         <div class="gcard-art">
-          <canvas class="gcard-canvas" width="300" height="180" data-game="packitup"></canvas>
+          <canvas class="gcard-canvas" width="300" height="180" data-game="spinfury"></canvas>
           <div class="gcard-badge badge-dev">In Dev</div>
         </div>
         <div class="gcard-body">
-          <div class="gcard-genre">Fill & Organize</div>
-          <div class="gcard-name">Pack It Up!</div>
-          <div class="gcard-desc">Drag, rotate and fit every item into the bag. Every space matters. Every move counts.</div>
+          <div class="gcard-genre">Action Survivor</div>
+          <div class="gcard-name">Spin Fury: Blade Survivor</div>
+          <div class="gcard-desc">Spin. Slash. Survive. Hordes close in from every direction — your blades never stop, but neither do they.</div>
           <div class="gcard-tags">
-            <span class="gtag">Puzzle</span>
-            <span class="gtag">Packing</span>
-            <span class="gtag">Strategy</span>
+            <span class="gtag">Action</span>
+            <span class="gtag">Survivor</span>
+            <span class="gtag">Roguelite</span>
           </div>
           <div class="gcard-footer">
             <div class="gcard-rating"><span class="stars">★★★★★</span> 4.9</div>
@@ -1691,34 +1691,38 @@ document.querySelectorAll('.gcard-canvas').forEach(canvas => {
       ['1','2 1','2 2','1 2','2 2','2 1','1'].forEach((n,i)=>{
         ctx.fillText(n, ox-14, oy+i*(cs+gap)+cs/2+3);
       });
-    } else if(type==='packitup'){
-      // Suitcase outline + colored item pieces inside
-      // Suitcase body
-      ctx.strokeStyle='rgba(255,255,255,0.15)';
-      ctx.lineWidth=2;
-      ctx.beginPath(); ctx.roundRect(60,20,180,140,12); ctx.stroke();
-      ctx.fillStyle='rgba(255,255,255,0.03)';
-      ctx.beginPath(); ctx.roundRect(60,20,180,140,12); ctx.fill();
-      // Handle
-      ctx.beginPath(); ctx.roundRect(120,10,60,18,8); ctx.stroke();
-      // Clasps
-      ctx.fillStyle='rgba(255,200,0,0.4)';
-      ctx.fillRect(125,17,20,8); ctx.fillRect(155,17,20,8);
-      // Items inside
-      const items=[
-        {x:68,y:30,w:60,h:30,c:'#FF6B6B'},
-        {x:136,y:30,w:40,h:30,c:'#4FC3F7'},
-        {x:184,y:30,w:48,h:30,c:'#FFE66D'},
-        {x:68,y:68,w:80,h:40,c:'#00E676'},
-        {x:156,y:68,w:76,h:40,c:'#AB47BC'},
-        {x:68,y:116,w:164,h:36,c:'#FF8A65'},
-      ];
-      items.forEach(item=>{
-        ctx.fillStyle=item.c+'CC';
-        ctx.shadowColor=item.c; ctx.shadowBlur=6+3*Math.sin(t+item.x);
-        ctx.beginPath(); ctx.roundRect(item.x,item.y,item.w,item.h,5); ctx.fill();
+    } else if(type==='spinfury'){
+      // Player in center, spinning blades, enemies approaching, XP gems
+      const cx2=W/2, cy2=H/2;
+      // XP gems
+      [[40,30,'#00E5FF'],[260,50,'#B44FFF'],[60,140,'#00E5FF'],[250,140,'#B44FFF'],[150,20,'#B44FFF']].forEach(([gx,gy,gc])=>{
+        ctx.fillStyle=gc; ctx.shadowColor=gc; ctx.shadowBlur=8;
+        ctx.beginPath(); ctx.moveTo(gx,gy-7); ctx.lineTo(gx+5,gy); ctx.lineTo(gx,gy+7); ctx.lineTo(gx-5,gy); ctx.closePath(); ctx.fill();
         ctx.shadowBlur=0;
       });
+      // Enemies (triangles approaching)
+      [[30,H/2,'#FF4444'],[W-30,H/2,'#FF4444'],[W/2,20,'#FF6633'],[W/2,H-20,'#FF6633']].forEach(([ex,ey,ec])=>{
+        const dx=cx2-ex, dy=cy2-ey, dist=Math.sqrt(dx*dx+dy*dy);
+        const nx=ex+dx/dist*(12+4*Math.sin(t*1.5)), ny=ey+dy/dist*(12+4*Math.sin(t*1.5));
+        ctx.fillStyle=ec; ctx.shadowColor=ec; ctx.shadowBlur=10;
+        ctx.beginPath(); ctx.arc(nx,ny,10,0,Math.PI*2); ctx.fill();
+        ctx.shadowBlur=0;
+      });
+      // Spinning blades (4 blades around player)
+      for(let b=0;b<4;b++){
+        const angle=t*2.5+b*Math.PI/2;
+        const bx=cx2+Math.cos(angle)*38, by=cy2+Math.sin(angle)*38;
+        ctx.save(); ctx.translate(bx,by); ctx.rotate(angle+t*4);
+        ctx.fillStyle='#E0E0FF'; ctx.shadowColor='#B44FFF'; ctx.shadowBlur=14;
+        ctx.beginPath(); ctx.ellipse(0,0,14,4,0,0,Math.PI*2); ctx.fill();
+        ctx.shadowBlur=0; ctx.restore();
+      }
+      // Player circle
+      ctx.beginPath(); ctx.arc(cx2,cy2,16,0,Math.PI*2);
+      ctx.fillStyle='#B44FFF'; ctx.shadowColor='#B44FFF'; ctx.shadowBlur=28; ctx.fill();
+      ctx.shadowBlur=0;
+      ctx.beginPath(); ctx.arc(cx2,cy2,10,0,Math.PI*2);
+      ctx.fillStyle='#E8D0FF'; ctx.fill();
     } else if(type==='merge'){
       // 4x4 2048 grid
       const cs=36,gap=4,ox=(W-4*cs-3*gap)/2,oy=(H-4*cs-3*gap)/2;
