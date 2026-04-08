@@ -1289,10 +1289,10 @@ footer{
     <span class="cta-icon">📡</span>
     <h2 class="cta-heading">SEND A<br><em style="background:linear-gradient(120deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:normal">TRANSPONDER</em><br>SNAIL</h2>
     <p class="cta-sub">For collaborations, press inquiries, or if you just want to talk about games — the crew is listening.</p>
-    <a href="/cdn-cgi/l/email-protection#c6b5b2b3a2afa9b5aea7a8adb5e8afa8a0a986a1aba7afaae8a5a9ab" class="cta-mail"><span class="__cf_email__" data-cfemail="6e1d1a1b0a07011d060f00051d40070008012e09030f0702400d0103">[email&#160;protected]</span></a>
+    <a href="mailto:studioshanks.info@gmail.com" class="cta-mail">studioshanks.info@gmail.com</a>
     <div class="cta-actions">
       <a href="https://play.google.com" target="_blank" class="btn-fire"><span>▶</span> Google Play</a>
-      <a href="/cdn-cgi/l/email-protection#196a6d6c7d70766a717877726a3770777f76597e74787075377a7674" class="btn-outline"><span>✉</span> Email Us</a>
+      <a href="mailto:studioshanks.info@gmail.com" class="btn-outline"><span>✉</span> Email Us</a>
     </div>
   </div>
 </section>
@@ -1325,7 +1325,7 @@ footer{
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      SCRIPTS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ── LOADER ──────────────────────────────────────────── */
 window.addEventListener('load', () => {
   setTimeout(() => {
@@ -1841,4 +1841,15 @@ if(scroll){
   }
 
   function stop() {
-    fadeTo(0, 1.8, () => { audio.pause(); audio.currentTi
+    fadeTo(0, 1.8, () => { audio.pause(); audio.currentTime = 0; });
+    isPlaying = false;
+    btn.classList.remove('playing');
+  }
+
+  btn.addEventListener('click', () => {
+    if (isPlaying) stop(); else play();
+  });
+})();
+</script>
+</body>
+</html>
