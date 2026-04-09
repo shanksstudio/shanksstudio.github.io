@@ -979,7 +979,7 @@ footer{
     <li><a href="#creed">Creed</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="/cdn-cgi/l/email-protection#b8cbcccddcd1d7cbd0d9d6d3cb96d1d6ded7f8dfd5d9d1d496dbd7d5" class="nav-cta">Get In Touch</a>
+  <a href="mailto:studioshanks.info@gmail.com" class="nav-cta">Get In Touch</a>
 </nav>
 
 <!-- ───────────── HERO ───────────── -->
@@ -1214,27 +1214,6 @@ footer{
         </div>
       </div>
 
-      <!-- Card 5 -->
-      <div class="gcard reveal rd5" data-tilt>
-        <div class="gcard-art">
-          <canvas class="gcard-canvas" width="300" height="180" data-game="merge"></canvas>
-          <div class="gcard-badge badge-dev">In Dev</div>
-        </div>
-        <div class="gcard-body">
-          <div class="gcard-genre">Puzzle / Merge</div>
-          <div class="gcard-name">Number Merge 2048+</div>
-          <div class="gcard-desc">Slide. Merge. Ascend. The grid is small. The numbers get big. Can you reach the top?</div>
-          <div class="gcard-tags">
-            <span class="gtag">Puzzle</span>
-            <span class="gtag">2048</span>
-            <span class="gtag">Strategy</span>
-          </div>
-          <div class="gcard-footer">
-            <div class="gcard-rating"><span class="stars">★★★★★</span> 4.9</div>
-            <div class="gcard-dl">2026</div>
-          </div>
-        </div>
-      </div>
 
       <!-- Phantom -->
       <div class="gcard-phantom reveal rd6">
@@ -1325,7 +1304,7 @@ footer{
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      SCRIPTS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ── LOADER ──────────────────────────────────────────── */
 window.addEventListener('load', () => {
   setTimeout(() => {
@@ -1817,7 +1796,6 @@ if(scroll){
   const btn   = document.getElementById('music-btn');
   let isPlaying = false;
 
-  // Fade utility
   function fadeTo(target, dur, cb) {
     const steps = 40;
     const interval = (dur * 1000) / steps;
@@ -1840,16 +1818,17 @@ if(scroll){
     }).catch(() => {});
   }
 
-  function stop() {
-    fadeTo(0, 1.8, () => { audio.pause(); audio.currentTime = 0; });
-    isPlaying = false;
-    btn.classList.remove('playing');
+  function pause() {
+    fadeTo(0, 1.2, () => {
+      audio.pause();
+      isPlaying = false;
+      btn.classList.remove('playing');
+    });
   }
 
   btn.addEventListener('click', () => {
-    if (isPlaying) stop(); else play();
+    if (isPlaying) pause();
+    else play();
   });
 })();
 </script>
-</body>
-</html>
