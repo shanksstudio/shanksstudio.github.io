@@ -1202,6 +1202,225 @@ footer{
 #music-btn:hover::after{opacity:1}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   GOOGLE PLAY STRIP BANNER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.gp-strip{
+  position:relative;z-index:2;
+  background:linear-gradient(135deg,rgba(0,212,100,0.05) 0%,rgba(6,7,13,0) 60%);
+  border-top:1px solid rgba(0,212,100,0.08);
+  border-bottom:1px solid rgba(0,212,100,0.08);
+  padding:2.2rem 5vw;
+  display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;
+}
+.gp-strip-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.72rem;font-weight:700;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--fog2);white-space:nowrap;
+}
+.gp-strip-games{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;}
+.gp-strip-btn{
+  display:inline-flex;align-items:center;gap:0.65rem;
+  padding:0.7rem 1.6rem;
+  background:rgba(0,212,100,0.06);
+  border:1px solid rgba(0,212,100,0.22);
+  border-radius:12px;
+  font-size:0.8rem;font-weight:700;
+  font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:#00D464;
+  transition:background 0.25s,border-color 0.25s,box-shadow 0.25s,transform 0.2s;
+  cursor:none;
+  white-space:nowrap;
+}
+.gp-strip-btn:hover{
+  background:rgba(0,212,100,0.12);
+  border-color:rgba(0,212,100,0.5);
+  box-shadow:0 0 24px rgba(0,212,100,0.18);
+  transform:translateY(-2px);
+}
+.gp-strip-btn .gp-icon{
+  width:18px;height:18px;
+  background:linear-gradient(135deg,#00D464,#00A878);
+  border-radius:5px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  font-size:0.65rem;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PUBLISHED / LIVE GAMES SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#published{
+  position:relative;z-index:2;
+  padding:8rem 5vw;
+  background:linear-gradient(180deg,transparent 0%,rgba(0,212,100,0.025) 40%,transparent 100%);
+  border-top:1px solid rgba(0,212,100,0.07);
+  border-bottom:1px solid rgba(0,212,100,0.07);
+}
+.pub-inner{max-width:1400px;margin:0 auto;}
+.pub-head{text-align:center;margin-bottom:5rem;}
+.pub-live-tag{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  padding:0.4rem 1rem;
+  background:rgba(0,212,100,0.08);
+  border:1px solid rgba(0,212,100,0.25);
+  border-radius:100px;
+  font-size:0.62rem;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:#00D464;margin-bottom:1.5rem;
+}
+.pub-live-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#00D464;box-shadow:0 0 8px #00D464;
+  animation:pulse 1.5s ease-in-out infinite;
+}
+.pub-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2rem;
+}
+.pub-card{
+  background:var(--ink2);
+  border:1px solid rgba(0,212,100,0.1);
+  border-radius:28px;
+  overflow:hidden;
+  position:relative;
+  display:block;
+  color:inherit;
+  text-decoration:none;
+  transition:border-color 0.4s,box-shadow 0.4s,transform 0.4s var(--ease-out);
+  cursor:none;
+}
+.pub-card:hover{
+  border-color:rgba(0,212,100,0.3);
+  box-shadow:0 24px 80px rgba(0,0,0,0.6),0 0 50px rgba(0,212,100,0.07);
+  transform:translateY(-6px);
+}
+.pub-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,212,100,0.4),transparent);
+  opacity:0;transition:opacity 0.4s;
+}
+.pub-card:hover::before{opacity:1}
+.pub-art{
+  height:220px;
+  position:relative;overflow:hidden;
+  background:var(--ink3);
+}
+.pub-art canvas{width:100%;height:100%}
+.pub-art-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,var(--ink2) 100%);
+  pointer-events:none;
+}
+.pub-live-badge{
+  position:absolute;top:16px;left:16px;
+  display:flex;align-items:center;gap:0.45rem;
+  padding:0.3rem 0.9rem;
+  background:rgba(0,212,100,0.12);
+  border:1px solid rgba(0,212,100,0.35);
+  border-radius:100px;
+  font-size:0.6rem;font-weight:700;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:#00D464;z-index:2;
+  backdrop-filter:blur(8px);
+}
+.pub-live-badge-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#00D464;
+  animation:pulse 1.5s ease-in-out infinite;
+}
+.pub-dl-count{
+  position:absolute;top:16px;right:16px;
+  display:flex;align-items:center;gap:0.4rem;
+  padding:0.3rem 0.8rem;
+  background:rgba(6,7,13,0.85);
+  border:1px solid var(--border);
+  border-radius:100px;
+  font-size:0.62rem;font-weight:600;
+  font-family:'JetBrains Mono',monospace;
+  color:var(--ash);z-index:2;
+  backdrop-filter:blur(12px);
+}
+.pub-body{padding:2rem 2rem 1.5rem}
+.pub-genre{
+  font-size:0.62rem;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:#00D464;margin-bottom:0.5rem;
+  font-family:'Barlow Condensed',sans-serif;
+}
+.pub-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.2rem;letter-spacing:0.04em;
+  color:var(--snow);margin-bottom:0.6rem;line-height:1;
+}
+.pub-desc{
+  font-size:0.95rem;font-weight:400;
+  line-height:1.75;color:var(--ash);margin-bottom:1.5rem;
+}
+.pub-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.pub-tag{
+  font-size:0.6rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.2rem 0.7rem;
+  border:1px solid rgba(0,212,100,0.15);
+  border-radius:5px;color:rgba(0,212,100,0.7);
+  background:rgba(0,212,100,0.04);
+  font-family:'Barlow Condensed',sans-serif;
+}
+.pub-footer{
+  padding:1.2rem 2rem 2rem;
+  display:flex;align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  border-top:1px solid rgba(255,255,255,0.04);
+}
+.pub-rating{
+  display:flex;flex-direction:column;gap:0.2rem;
+}
+.pub-rating-stars{color:var(--gold);font-size:0.8rem;letter-spacing:0.04em}
+.pub-rating-label{
+  font-size:0.6rem;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--fog2);font-family:'Barlow Condensed',sans-serif;
+}
+.pub-play-btn{
+  display:inline-flex;align-items:center;gap:0.65rem;
+  padding:0.8rem 1.8rem;
+  background:rgba(0,212,100,0.08);
+  border:1px solid rgba(0,212,100,0.35);
+  border-radius:10px;
+  color:#00D464;
+  font-size:0.78rem;font-weight:700;
+  font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:0.12em;text-transform:uppercase;
+  transition:background 0.25s,box-shadow 0.25s,transform 0.2s,border-color 0.25s;
+  cursor:none;
+  white-space:nowrap;
+}
+.pub-play-btn:hover{
+  background:rgba(0,212,100,0.14);
+  border-color:rgba(0,212,100,0.6);
+  box-shadow:0 0 28px rgba(0,212,100,0.2);
+  transform:translateY(-2px);
+}
+.pub-play-btn svg{flex-shrink:0}
+
+/* ── Gcard Play Store link button for live cards ── */
+.gcard-play-link{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  font-size:0.6rem;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:#00D464;
+  font-family:'Barlow Condensed',sans-serif;
+  transition:color 0.25s;
+  cursor:none;
+}
+.gcard-play-link:hover{color:#4DFFA0}
+.gcard-play-link svg{flex-shrink:0}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    RESPONSIVE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media(max-width:1100px){
@@ -1214,6 +1433,7 @@ footer{
   .games-head{flex-direction:column;align-items:flex-start;gap:1.5rem}
   .spotlight-inner{grid-template-columns:1fr;gap:4rem}
   .spotlight-phone-wrap{order:-1}
+  .pub-grid{grid-template-columns:1fr;gap:1.5rem}
 }
 @media(max-width:768px){
   nav{padding:0 4vw}
@@ -1222,12 +1442,14 @@ footer{
   footer{flex-direction:column;align-items:center;text-align:center}
   .about-stats-grid{grid-template-columns:1fr 1fr}
   .hero-stats{gap:2rem;flex-wrap:wrap}
+  #published{padding:5rem 4vw}
 }
 @media(max-width:480px){
   .phone-frame{width:200px}
   .phone-screen{height:400px}
   .spotlight-phone{width:220px}
   .spotlight-phone-screen{height:440px}
+  .pub-footer{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
@@ -1258,8 +1480,9 @@ footer{
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#published">Live Games</a></li>
     <li><a href="#spotlight">Spin Fury</a></li>
-    <li><a href="#games-section">Games</a></li>
+    <li><a href="#games-section">All Games</a></li>
     <li><a href="#creed">Creed</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -1273,7 +1496,7 @@ footer{
   <div class="hero-left">
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
-      Independent Mobile Studio · Istanbul
+      Independent Mobile Studio · Istanbul · 2 Games Live
     </div>
     <h1 class="hero-title">
       <span class="t-line"><span class="t-inner t1">FORGE</span></span>
@@ -1284,17 +1507,17 @@ footer{
       We don't follow trends — we set them. Crafting bold mobile games that conquer every screen, one tap at a time. No crew. No limits. All fire.
     </p>
     <div class="hero-actions">
-      <a href="#games-section" class="btn-fire"><span>⚡</span> Explore Fleet</a>
-      <a href="#contact" class="btn-outline"><span>📡</span> Get In Touch</a>
+      <a href="#published" class="btn-fire"><span>▶</span> Play Our Games</a>
+      <a href="#games-section" class="btn-outline"><span>⚡</span> Explore Fleet</a>
     </div>
     <div class="hero-stats">
       <div>
-        <div class="hero-stat-num" data-count="5">0</div>
-        <div class="hero-stat-label">Games In Dev</div>
+        <div class="hero-stat-num" data-count="2">0</div>
+        <div class="hero-stat-label">Published Live</div>
       </div>
       <div>
-        <div class="hero-stat-num">∞</div>
-        <div class="hero-stat-label">Ideas Brewing</div>
+        <div class="hero-stat-num" data-count="5">0</div>
+        <div class="hero-stat-label">Games In Pipeline</div>
       </div>
       <div>
         <div class="hero-stat-num" data-count="1">0</div>
@@ -1310,15 +1533,15 @@ footer{
       <!-- Floating pills -->
       <div class="float-pill fp1">
         <div class="pill-dot pill-dot-gold"></div>
-        ★ 4.9 Rated
+        ★ 2 Live Games
       </div>
       <div class="float-pill fp2">
         <div class="pill-dot pill-dot-cyan"></div>
-        ▶ Google Play
+        ▶ On Google Play
       </div>
       <div class="float-pill fp3">
         <div class="pill-dot pill-dot-purple"></div>
-        🎮 5 Games
+        🎮 5 in Pipeline
       </div>
 
       <div class="phone-side left">
@@ -1352,7 +1575,7 @@ footer{
 <div class="marquee-wrap">
   <div class="marquee-row">
     <div class="marquee-track">
-      <div class="marquee-item"><span class="m-accent">5+ Games</span><span class="m-sep">✦</span></div>
+      <div class="marquee-item"><span class="m-accent">2 Live on Play Store</span><span class="m-sep">✦</span></div>
       <div class="marquee-item">In Development<span class="m-sep">✦</span></div>
       <div class="marquee-item"><span class="m-accent">Google Play</span><span class="m-sep">✦</span></div>
       <div class="marquee-item">Mobile First<span class="m-sep">✦</span></div>
@@ -1362,7 +1585,7 @@ footer{
       <div class="marquee-item">No Limits<span class="m-sep">✦</span></div>
       <div class="marquee-item"><span class="m-accent">Players First</span><span class="m-sep">✦</span></div>
       <div class="marquee-item">Global Market<span class="m-sep">✦</span></div>
-      <div class="marquee-item"><span class="m-accent">5+ Games</span><span class="m-sep">✦</span></div>
+      <div class="marquee-item"><span class="m-accent">2 Live on Play Store</span><span class="m-sep">✦</span></div>
       <div class="marquee-item">In Development<span class="m-sep">✦</span></div>
       <div class="marquee-item"><span class="m-accent">Google Play</span><span class="m-sep">✦</span></div>
       <div class="marquee-item">Mobile First<span class="m-sep">✦</span></div>
@@ -1400,6 +1623,109 @@ footer{
   </div>
 </div>
 
+<div class="gp-strip">
+  <span class="gp-strip-label">Available Now on</span>
+  <div class="gp-strip-games">
+    <a href="https://play.google.com/store/apps/details?id=com.shanksstudio.tapstacktower" target="_blank" rel="noopener" class="gp-strip-btn">
+      <div class="gp-icon">▶</div>
+      Tap Stack Tower
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.shanksstudio.colorroadrunner" target="_blank" rel="noopener" class="gp-strip-btn">
+      <div class="gp-icon">▶</div>
+      Color Road Runner
+    </a>
+  </div>
+  <span class="gp-strip-label">Google Play · Free</span>
+</div>
+
+<div class="sdiv"><div class="sdiv-text">▶ Now on Google Play ▶</div></div>
+
+<!-- ─── PUBLISHED / LIVE GAMES ─────────── -->
+<section id="published">
+  <div class="pub-inner">
+    <div class="pub-head">
+      <div class="pub-live-tag reveal">
+        <div class="pub-live-dot"></div>
+        Live on Google Play
+      </div>
+      <h2 class="section-heading reveal rd1">Download <em>Now</em></h2>
+      <p class="section-body reveal rd2" style="max-width:500px;margin:1rem auto 0;text-align:center;">Two games live in the store — free to play, ready to conquer.</p>
+    </div>
+
+    <div class="pub-grid">
+
+      <!-- Tap Stack Tower -->
+      <a href="https://play.google.com/store/apps/details?id=com.shanksstudio.tapstacktower" target="_blank" rel="noopener" class="pub-card reveal rd1">
+        <div class="pub-art">
+          <canvas class="pub-canvas" width="680" height="220" data-game="stack"></canvas>
+          <div class="pub-art-overlay"></div>
+          <div class="pub-live-badge">
+            <div class="pub-live-badge-dot"></div>
+            Live
+          </div>
+          <div class="pub-dl-count">🎮 Free to Play</div>
+        </div>
+        <div class="pub-body">
+          <div class="pub-genre">Single Tap · Casual</div>
+          <div class="pub-name">Tap Stack Tower</div>
+          <div class="pub-desc">Stack blocks with perfect timing. One tap stands between glory and total collapse. How high can you build before it all comes crashing down?</div>
+          <div class="pub-tags">
+            <span class="pub-tag">Casual</span>
+            <span class="pub-tag">Neon Visuals</span>
+            <span class="pub-tag">High Score</span>
+            <span class="pub-tag">One Tap</span>
+          </div>
+        </div>
+        <div class="pub-footer">
+          <div class="pub-rating">
+            <div class="pub-rating-stars">★★★★★</div>
+            <div class="pub-rating-label">On Google Play</div>
+          </div>
+          <div class="pub-play-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1.04-1.27 1.67-.7l14 8.5a.93.93 0 0 1 0 1.4L4.67 21.2C4.04 21.77 3 21.33 3 20.5z"/></svg>
+            Get on Google Play
+          </div>
+        </div>
+      </a>
+
+      <!-- Color Road Runner -->
+      <a href="https://play.google.com/store/apps/details?id=com.shanksstudio.colorroadrunner" target="_blank" rel="noopener" class="pub-card reveal rd2">
+        <div class="pub-art">
+          <canvas class="pub-canvas" width="680" height="220" data-game="runner"></canvas>
+          <div class="pub-art-overlay"></div>
+          <div class="pub-live-badge">
+            <div class="pub-live-badge-dot"></div>
+            Live
+          </div>
+          <div class="pub-dl-count">🎮 Free to Play</div>
+        </div>
+        <div class="pub-body">
+          <div class="pub-genre">Endless Runner · Reflex</div>
+          <div class="pub-name">Color Road Runner</div>
+          <div class="pub-desc">Match your color, dodge the rest. Speed keeps climbing. There are no checkpoints — only consequences. How far will your reflexes carry you?</div>
+          <div class="pub-tags">
+            <span class="pub-tag">Runner</span>
+            <span class="pub-tag">Reflex</span>
+            <span class="pub-tag">Color Match</span>
+            <span class="pub-tag">Endless</span>
+          </div>
+        </div>
+        <div class="pub-footer">
+          <div class="pub-rating">
+            <div class="pub-rating-stars">★★★★★</div>
+            <div class="pub-rating-label">On Google Play</div>
+          </div>
+          <div class="pub-play-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1.04-1.27 1.67-.7l14 8.5a.93.93 0 0 1 0 1.4L4.67 21.2C4.04 21.77 3 21.33 3 20.5z"/></svg>
+            Get on Google Play
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
 <!-- ─── ABOUT ─────────────────────────── -->
 <div class="section reveal" id="about">
   <div class="section-kicker">Our Story</div>
@@ -1416,8 +1742,8 @@ footer{
     </div>
     <div class="about-stats-grid reveal rd2">
       <div class="astat">
-        <div class="astat-num" data-count="5">0</div>
-        <div class="astat-label">Games in Dev</div>
+        <div class="astat-num" data-count="2">0</div>
+        <div class="astat-label">Published Live</div>
       </div>
       <div class="astat">
         <div class="astat-num">∞</div>
@@ -1510,7 +1836,7 @@ footer{
           <div class="gcard-art">
             <canvas class="gcard-canvas" width="310" height="190" data-game="stack"></canvas>
             <div class="gcard-art-overlay"></div>
-            <div class="gcard-badge badge-soon">Coming Soon</div>
+            <div class="gcard-badge badge-live">Live ▶</div>
           </div>
           <div class="gcard-body">
             <div class="gcard-genre">Single Tap</div>
@@ -1521,7 +1847,10 @@ footer{
             </div>
             <div class="gcard-footer">
               <div class="gcard-rating"><span class="stars">★★★★★</span> 5.0</div>
-              <div class="gcard-dl">Launching 2026</div>
+              <a href="https://play.google.com/store/apps/details?id=com.shanksstudio.tapstacktower" target="_blank" rel="noopener" class="gcard-play-link">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1.04-1.27 1.67-.7l14 8.5a.93.93 0 0 1 0 1.4L4.67 21.2C4.04 21.77 3 21.33 3 20.5z"/></svg>
+                Play Store
+              </a>
             </div>
           </div>
         </div>
@@ -1533,7 +1862,7 @@ footer{
           <div class="gcard-art">
             <canvas class="gcard-canvas" width="310" height="190" data-game="runner"></canvas>
             <div class="gcard-art-overlay"></div>
-            <div class="gcard-badge badge-dev">In Dev</div>
+            <div class="gcard-badge badge-live">Live ▶</div>
           </div>
           <div class="gcard-body">
             <div class="gcard-genre">Endless Runner</div>
@@ -1544,7 +1873,10 @@ footer{
             </div>
             <div class="gcard-footer">
               <div class="gcard-rating"><span class="stars">★★★★★</span> 4.9</div>
-              <div class="gcard-dl">2026</div>
+              <a href="https://play.google.com/store/apps/details?id=com.shanksstudio.colorroadrunner" target="_blank" rel="noopener" class="gcard-play-link">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1.04-1.27 1.67-.7l14 8.5a.93.93 0 0 1 0 1.4L4.67 21.2C4.04 21.77 3 21.33 3 20.5z"/></svg>
+                Play Store
+              </a>
             </div>
           </div>
         </div>
@@ -1674,7 +2006,7 @@ footer{
     <p class="cta-sub">For collaborations, press inquiries, or if you just want to talk about games — the crew is listening.</p>
     <a href="mailto:contact@shanksstudio.com" class="cta-mail">contact@shanksstudio.com</a>
     <div class="cta-actions">
-      <a href="https://play.google.com" target="_blank" class="btn-fire"><span>▶</span> Google Play</a>
+      <a href="https://play.google.com/store/apps/developer?id=Shanks+Studio" target="_blank" class="btn-fire"><span>▶</span> All Games on Play Store</a>
       <a href="mailto:contact@shanksstudio.com" class="btn-outline"><span>✉</span> Email Us</a>
     </div>
   </div>
@@ -1697,12 +2029,13 @@ footer{
   </div>
   <div class="footer-center">
     <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms</a>
+      <a href="https://play.google.com/store/apps/details?id=com.shanksstudio.tapstacktower" target="_blank" rel="noopener">Tap Stack Tower</a>
+      <a href="https://play.google.com/store/apps/details?id=com.shanksstudio.colorroadrunner" target="_blank" rel="noopener">Color Road Runner</a>
+      <a href="privacy.html">Privacy</a>
       <a href="presskit.html">Press Kit</a>
       <a href="mailto:contact@shanksstudio.com">Contact</a>
     </div>
-    <div class="footer-copy">© 2026 Shanks Studio · All rights reserved</div>
+    <div class="footer-copy">© 2026 Shanks Studio · All rights reserved · Made in Istanbul</div>
   </div>
   <div class="footer-location">// 41.0082° N, 28.9784° E // ISTANBUL</div>
 </footer>
@@ -1730,7 +2063,7 @@ function animRing(){
   requestAnimationFrame(animRing);
 }
 animRing();
-document.querySelectorAll('a,button,[data-tilt]').forEach(el=>{
+document.querySelectorAll('a,button,[data-tilt],.pub-card,.gp-strip-btn').forEach(el=>{
   el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
 });
@@ -2047,6 +2380,14 @@ window.addEventListener('load',()=>{
 
   // Game cards
   document.querySelectorAll('.gcard-canvas').forEach(canvas=>{
+    const type=canvas.dataset.game;
+    const W=parseInt(canvas.getAttribute('width'));
+    const H=parseInt(canvas.getAttribute('height'));
+    initCanvas(canvas,type,W,H);
+  });
+
+  // Published game banners
+  document.querySelectorAll('.pub-canvas').forEach(canvas=>{
     const type=canvas.dataset.game;
     const W=parseInt(canvas.getAttribute('width'));
     const H=parseInt(canvas.getAttribute('height'));
