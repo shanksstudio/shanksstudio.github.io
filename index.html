@@ -54,60 +54,7 @@ body{
 img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   LOADING SCREEN
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-#loader{
-  position:fixed;inset:0;z-index:9000;
-  background:var(--ink);
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:2.5rem;
-  transition:opacity 0.7s var(--ease-in), visibility 0.7s;
-}
-#loader.done{opacity:0;visibility:hidden;pointer-events:none}
-.loader-emblem{
-  display:flex;flex-direction:column;align-items:center;gap:1rem;
-  opacity:0;animation:loaderFade 0.6s 0.3s forwards;
-}
-.loader-icon{
-  width:64px;height:64px;
-  border-radius:16px;
-  background:linear-gradient(135deg,var(--red) 0%,var(--red2) 100%);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.8rem;
-  box-shadow:0 0 40px rgba(232,19,42,0.5), 0 0 80px rgba(232,19,42,0.2);
-  animation:loaderIconPulse 1.5s 0.9s ease-in-out infinite;
-}
-@keyframes loaderIconPulse{0%,100%{box-shadow:0 0 40px rgba(232,19,42,0.5)}50%{box-shadow:0 0 60px rgba(232,19,42,0.8),0 0 100px rgba(232,168,32,0.2)}}
-.loader-logo{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:2rem;letter-spacing:0.2em;
-  color:var(--snow);
-}
-.loader-logo em{
-  color:var(--gold);font-style:normal;
-}
-.loader-bar-wrap{
-  width:240px;height:2px;
-  background:rgba(255,255,255,0.07);
-  border-radius:2px;overflow:hidden;
-  opacity:0;animation:loaderFade 0.4s 0.5s forwards;
-}
-.loader-bar{
-  height:100%;width:0%;
-  background:linear-gradient(90deg,var(--red),var(--gold));
-  border-radius:2px;
-  animation:loadFill 1.6s 0.6s var(--ease-out) forwards;
-}
-.loader-pct{
-  font-family:'JetBrains Mono',monospace;
-  font-size:0.7rem;letter-spacing:0.1em;
-  color:var(--fog2);
-  opacity:0;animation:loaderFade 0.4s 0.7s forwards;
-}
-@keyframes loadFill{to{width:100%}}
-@keyframes loaderFade{to{opacity:1}}
+
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    CURSOR
@@ -1455,16 +1402,6 @@ footer{
 </head>
 <body>
 
-<!-- ─── LOADER ─────────────────────────── -->
-<div id="loader">
-  <div class="loader-emblem">
-    <div class="loader-icon">⚔</div>
-    <div class="loader-logo">SHANKS <em>STUDIO</em></div>
-  </div>
-  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
-  <div class="loader-pct">FORGING YOUR EXPERIENCE…</div>
-</div>
-
 <!-- ─── CURSOR ────────────────────────── -->
 <div class="cur-dot" id="cur-dot"></div>
 <div class="cur-ring" id="cur-ring"></div>
@@ -1928,20 +1865,20 @@ footer{
         </div>
       </div>
 
-      <!-- FLIP SORT 3D -->
+      <!-- SLASH BLAST: BLOCK PUZZLE -->
       <div class="gcard reveal rd5" data-tilt data-accent="teal">
         <div class="gcard-inner">
           <div class="gcard-art">
-            <canvas class="gcard-canvas" width="310" height="190" data-game="flipsort"></canvas>
+            <canvas class="gcard-canvas" width="310" height="190" data-game="slashblast"></canvas>
             <div class="gcard-art-overlay"></div>
             <div class="gcard-badge badge-dev">In Dev</div>
           </div>
           <div class="gcard-body">
-            <div class="gcard-genre">3D Physics Puzzle</div>
-            <div class="gcard-name">Flip Sort 3D</div>
-            <div class="gcard-desc">Sort the cylinders. Match the colors. Satisfying 3D physics that reward lateral thinking.</div>
+            <div class="gcard-genre">Block Puzzle · Boss Battle</div>
+            <div class="gcard-name">Slash Blast: Block Puzzle</div>
+            <div class="gcard-desc">Clear blocks. Damage bosses. Charge your Ultimate — then unleash your blade in a single devastating slash.</div>
             <div class="gcard-tags">
-              <span class="gtag">Puzzle</span><span class="gtag">3D</span><span class="gtag">Physics</span>
+              <span class="gtag">Puzzle</span><span class="gtag">Boss Battle</span><span class="gtag">Ultimate</span>
             </div>
             <div class="gcard-footer">
               <div class="gcard-rating"><span class="stars">★★★★★</span> 4.9</div>
@@ -2074,13 +2011,6 @@ document.querySelectorAll('a,button,[data-tilt],.pub-card,.gp-strip-btn').forEac
 const nav=document.getElementById('main-nav');
 window.addEventListener('scroll',()=>{
   nav.classList.toggle('scrolled',window.scrollY>40);
-});
-
-/* ══════════════════════════════════════
-   LOADER
-══════════════════════════════════════ */
-window.addEventListener('load',()=>{
-  setTimeout(()=>document.getElementById('loader').classList.add('done'),2000);
 });
 
 /* ══════════════════════════════════════
@@ -2284,38 +2214,80 @@ window.addEventListener('load',()=>{
         ctx.beginPath();ctx.arc(cx,cy,9,0,Math.PI*2);
         ctx.fillStyle='#E8D0FF';ctx.shadowBlur=0;ctx.fill();
 
-      } else if(type==='flipsort'){
-        // 3D perspective sort puzzle
-        const cols=4, rows=4;
-        const cw=(W-20)/cols, ch=22, gap=3;
-        const colors=['#00D4A0','#E8132A','#4488FF','#E8A820'];
-        // Draw stacks of cylinders (top-down perspective)
-        const layout=[
-          [0,1,2,3],[1,0,3,2],[2,3,0,1],[3,2,1,0]
-        ];
-        layout.forEach((stack,c)=>{
-          stack.forEach((colorIdx,r)=>{
-            const x=10+c*cw;
-            const y=20+r*(ch+gap);
-            const col=colors[colorIdx];
-            // Cylinder body
-            const g=ctx.createLinearGradient(x,y,x+cw-8,y);
-            g.addColorStop(0,col+'CC');g.addColorStop(0.4,col);g.addColorStop(1,col+'88');
-            ctx.fillStyle=g;
-            ctx.shadowColor=col;ctx.shadowBlur=r===0?12:4;
-            ctx.beginPath();ctx.roundRect(x,y,cw-8,ch,4);ctx.fill();
-            // Top highlight
-            ctx.fillStyle='rgba(255,255,255,0.12)';
-            ctx.beginPath();ctx.roundRect(x+2,y+2,cw-16,6,2);ctx.fill();
-            ctx.shadowBlur=0;
-          });
+      } else if(type==='slashblast'){
+        // Block puzzle with boss battle + ultimate bar
+        const cols=7, rows=6;
+        const bw=Math.floor((W-12)/cols), bh=Math.floor((H*0.55)/rows);
+        const gridTop=H*0.32, gridLeft=6;
+        const blockColors=['#00B4D8','#4FC3F7','#81C784','#E8132A','#B44FFF','#FFD060'];
+        // Seed a stable block grid
+        const grid=[];
+        for(let r=0;r<rows;r++){for(let c=0;c<cols;c++){grid.push((r*3+c*2+7)%blockColors.length);}}
+        // Boss health (animated)
+        const bossHp=0.35+0.3*Math.abs(Math.sin(t*0.4));
+        // Ultimate bar (fills up)
+        const ult=(t*0.12)%1;
+        // Draw boss health bar bg
+        const hbW=W-20, hbH=8;
+        ctx.fillStyle='rgba(0,0,0,0.5)';
+        ctx.beginPath();ctx.roundRect(10,8,hbW,hbH,4);ctx.fill();
+        ctx.fillStyle=`rgba(232,19,42,${0.7+0.3*Math.sin(t*2)})`;
+        ctx.shadowColor='#E8132A';ctx.shadowBlur=8;
+        ctx.beginPath();ctx.roundRect(10,8,hbW*bossHp,hbH,4);ctx.fill();
+        ctx.shadowBlur=0;
+        // Boss label
+        ctx.fillStyle='rgba(255,255,255,0.5)';ctx.font='bold 7px sans-serif';
+        ctx.textAlign='left';ctx.fillText('BOSS HP',12,7);
+        // Ultimate bar bg
+        ctx.fillStyle='rgba(255,255,255,0.07)';
+        ctx.beginPath();ctx.roundRect(10,20,hbW,6,3);ctx.fill();
+        const ultCol=ult>=1?'#FFD060':'#00D4FF';
+        ctx.fillStyle=ultCol;ctx.shadowColor=ultCol;ctx.shadowBlur=ult>0.85?14:4;
+        ctx.beginPath();ctx.roundRect(10,20,hbW*Math.min(ult,1),6,3);ctx.fill();
+        ctx.shadowBlur=0;
+        ctx.fillStyle='rgba(255,255,255,0.45)';ctx.font='bold 6px sans-serif';
+        ctx.textAlign='left';ctx.fillText('ULTIMATE',12,19);
+        // Draw block grid
+        grid.forEach((ci,idx)=>{
+          const c=idx%cols, r=Math.floor(idx/cols);
+          const x=gridLeft+c*bw, y=gridTop+r*bh;
+          const col=blockColors[ci];
+          // Flash effect on one block
+          const flash=(Math.floor(t*3)+idx)%18===0;
+          const g2=ctx.createLinearGradient(x,y,x+bw-3,y+bh-3);
+          g2.addColorStop(0,col+(flash?'FF':'CC'));
+          g2.addColorStop(1,col+(flash?'CC':'77'));
+          ctx.fillStyle=g2;
+          ctx.shadowColor=flash?col:'transparent';ctx.shadowBlur=flash?16:0;
+          ctx.beginPath();ctx.roundRect(x+1,y+1,bw-3,bh-3,3);ctx.fill();
+          // highlight
+          ctx.fillStyle='rgba(255,255,255,0.12)';
+          ctx.beginPath();ctx.roundRect(x+2,y+2,bw-10,3,1);ctx.fill();
+          ctx.shadowBlur=0;
         });
-        // Animate one cylinder floating/moving
-        const anim_c=Math.floor((t*0.5)%4);
-        const ax=10+anim_c*cw;
-        const ay=20+Math.sin(t*2)*12;
-        ctx.fillStyle=colors[0];ctx.shadowColor=colors[0];ctx.shadowBlur=20;
-        ctx.beginPath();ctx.roundRect(ax,ay,cw-8,ch,4);ctx.fill();ctx.shadowBlur=0;
+        // Slash effect when ultimate is near full
+        if(ult>0.9){
+          const slash=((t*4)%1);
+          const sx1=W*0.05, sy1=H*0.6;
+          const sx2=W*0.95, sy2=gridTop+10;
+          ctx.save();
+          ctx.globalAlpha=Math.max(0,1-slash)*0.9;
+          ctx.strokeStyle='#FFD060';ctx.lineWidth=3+slash*4;
+          ctx.shadowColor='#FFD060';ctx.shadowBlur=24;
+          ctx.beginPath();ctx.moveTo(sx1,sy1);ctx.lineTo(sx2,sy2);ctx.stroke();
+          ctx.strokeStyle='#fff';ctx.lineWidth=1;ctx.shadowBlur=8;
+          ctx.beginPath();ctx.moveTo(sx1,sy1);ctx.lineTo(sx2,sy2);ctx.stroke();
+          ctx.restore();
+        }
+        // Player character at bottom (simple pixel style)
+        const px=W/2, py=H-18;
+        ctx.fillStyle='#B44FFF';ctx.shadowColor='#B44FFF';ctx.shadowBlur=12;
+        ctx.beginPath();ctx.arc(px,py-8,7,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle='#E8D0FF';ctx.shadowBlur=0;
+        ctx.beginPath();ctx.arc(px,py-8,4,0,Math.PI*2);ctx.fill();
+        // Sword
+        ctx.strokeStyle='#C0C8FF';ctx.lineWidth=2;
+        ctx.beginPath();ctx.moveTo(px+5,py-12);ctx.lineTo(px+14,py-20);ctx.stroke();
 
       } else if(type==='idle'){
         [0.9,0.7,0.55,0.8,0.6,0.95,0.5,0.75,0.65,0.85].forEach((h,i)=>{
@@ -2365,7 +2337,7 @@ window.addEventListener('load',()=>{
   }
 
   // Hero phones — cycle through game types
-  const gameTypes=['spinfury','nonogram','stack','runner','flipsort','helix','merge','idle'];
+  const gameTypes=['spinfury','nonogram','stack','runner','slashblast','helix','merge','idle'];
   let mainIdx=0,lIdx=2,rIdx=4;
   const mainC=document.getElementById('game-canvas-main');
   const lC=document.getElementById('game-canvas-l');
